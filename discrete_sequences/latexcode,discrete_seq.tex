@@ -63,7 +63,25 @@ Table of Parameters\\
 }
 \begin{table}[h]
     \centering
-     \input{/tables/table,discrete_seq.tex}
+    \begin{tabular}{|c|c|}
+        \hline
+         Input Variable & Condition\\
+        \hline
+         $x\brak{0}$ & first term of AP\\
+         \hline
+         $r$ & common ratio of GP\\
+         \hline
+         $x\brak{0},x\brak{1},x\brak{2}$ & three terms in GP \\
+         \hline
+         $x\brak{0},x\brak{1},x\brak{2}$ & $x\brak{0}+x\brak{1}+x\brak{2}=56$ \\
+         \hline
+          $x\brak{0}-1,x\brak{1}-7,x\brak{2}-21$ & form an AP \\
+         \hline
+          $x\brak{n}$ & $\brak{n+1}^{th}$ term of GP \\
+         \hline
+         $x\brak{n}\system{Z}X\brak{z}$ & $X\brak{z}=x\brak{0}\sum_{k=0}^{k=\infty}\brak{\frac{z}{r}}^{-k}$\\
+         \hline
+    \end{tabular}
      \label{tab:t1}
 \end{table}
 We know that, if three numbers p,q and r are in arithmetic progression then,
@@ -115,11 +133,11 @@ so from (\ref{q2}),
 Then from (\ref{e1})
 \begin{align}
     \label{a11}
-    x_{1}\brak{n}=8.2^{n}=2^{n+3}\qquad for \brak{r=2}
+    x_{1}\brak{n}=8.2^{n}=2^{n+3}
 \end{align}
 \begin{align}
     \label{a12}
-    x_{2}\brak{n}=32.\left(\frac{1}{2}\right)^{n}=2^{5-n}\quad for \brak{r=\frac{1}{2}}
+    x_{2}\brak{n}=32.\left(\frac{1}{2}\right)^{n}=2^{5-n}
 \end{align}\\\\
 $x\brak{0}$,$x\brak{1}$ and $x\brak{2}$ are 8,16 and 32 $\brak{or}$ 32,16 and 8 respectively
 \begin{figure}[h]
@@ -147,32 +165,28 @@ where, we assume that x\brak{k}=0   for \brak{k<0}\\
 \end{align}
 from \brak{\ref{a11}},
 \begin{align}X_1\brak{z}=\sum_{k=0}^{\infty} 8.2^k.z^{-k}\end{align}
-\begin{align}X_1\brak{z}=8.\sum_{k=0}^{\infty} 2^k.z^{-k}\end{align}
+
 \begin{align}X_1\brak{z}=8.\sum_{k=0}^{\infty} \brak{\frac{2}{z}}^k\end{align}
-or,
-\begin{align}X_1\brak{z}=\lim_{n\to\infty}8.\sum_{k=0}^{n} \left(\frac{2}{z}\right)^k\end{align}
-\begin{align}X_1\brak{z}=8.\lim_{n\to\infty}\sum_{k=0}^{n}
-\left(\frac{2}{z}\right)^k\end{align}
-\begin{align}X_1\brak{z}=8.\lim_{n\to\infty} \frac{\brak{2.z^{-1}}^{n+1}-1}{2.z^{-1}-1}\end{align}
+
+\begin{align}X_1\brak{z}=8.\lim_{n\to\infty} \left(\frac{1-\brak{2.z^{-1}}^{n+1}}{1-2.z^{-1}}\right)\end{align}
 Hence,
 \begin{align}
-X_1\brak{z}=\frac{8}{1-2z^{-1}}\quad if\ \brak|2z^{-1}|<1
+X_1\brak{z}=\frac{8}{1-2z^{-1}}\quad if\ \brak{|2z^{-1}|<1}
 \end{align}
 or,
 $$X_1\brak{z}\ is\ undefined\quad if\ \brak{|2z^{-1}|>1}$$
 and also from \brak{\ref{a12}},\\
-\begin{align}X_2\brak{z}=\sum_{k=0}^{\infty} 32.\brak{\frac{1}{2}}^k.z^{-k}\end{align}\\
-\begin{align}X_2\brak{z}=32.\sum_{k=0}^{\infty} \brak{\frac{1}{2}}^k.z^{-k}\end{align}\\
-\begin{align}X_2\brak{z}=32.\sum_{k=0}^{\infty} \brak{\frac{1}{2z}}^k\end{align}\\
-or,\\
-\begin{align}X_2\brak{z}=\lim_{n\to\infty}32.\sum_{k=0}^{n} \left(\frac{1}{2z}\right)^k\end{align}\\
-\begin{align}X_2\brak{z}=32.\lim_{n\to\infty}\sum_{k=0}^{n}
-\left(\frac{1}{2z}\right)^k\end{align}\\
-\begin{align}X_2\brak{z}=32.\lim_{n\to\infty} \frac{\brak{\brak{2z}^{-1}}^{n+1}-1}{{\brak{2z}^{-1}}-1}\end{align}\\
-Hence,\\
-\begin{align}X_2\brak{z}=\frac{32}{1-{\brak{2z}^{-1}}}\quad if\ \brak{|{\brak{2z}^{-1}}|<1}\end{align}\\
-or,\\
-$$X_2\brak{z}\ is\ undefined\quad if\ \brak{|{\brak{2z}^{-1}}|>1}$$\\
+\begin{align}
+    X_2\brak{z}=\sum_{k=0}^{\infty} x_2\brak{k}.z^{-k}
+\end{align}
+\begin{align}X_2\brak{z}=\sum_{k=0}^{\infty} 32.\brak{\frac{1}{2}}^k.z^{-k}\end{align}
+\begin{align}X_2\brak{z}=32.\sum_{k=0}^{\infty} \brak{\frac{1}{2z}}^k\end{align}
+or,
+\begin{align}X_2\brak{z}=32.\lim_{n\to\infty} \left(\frac{1-\brak{\brak{2z}^{-1}}^{n+1}}{1-{\brak{2z}^{-1}}}\right)\end{align}
+Hence,
+\begin{align}X_2\brak{z}=\frac{32}{1-{\brak{2z}^{-1}}}\quad if\ \brak{|{\brak{2z}^{-1}}|<1}\end{align}
+or,
+$$X_2\brak{z}\ is\ undefined\quad if\ \brak{|{\brak{2z}^{-1}}|>1}$$
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.6]{py_11.png}
