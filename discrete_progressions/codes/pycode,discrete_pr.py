@@ -1,68 +1,70 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Define the range of values for z
-z_values = np.linspace(0.1, 2, 100)
+# Values for larger n
+n_values_large = np.arange(0, 30, 1)
 
-# Define the functions
-def f1(z):
-    return (z + 2) / 2
+# Function definitions
+def func1(n):
+    return (n + 2) / 2
 
-def f2(z):
-    return z * (z + 3) / 4
+def func2(n):
+    return n * (n + 3) / 4
 
-def f3(z):
-    return (10 - z) / 2
+def func3(n):
+    return (10 - n) / 2
 
-def f4(z):
-    return z * (21 - z) / 4
+def func4(n):
+    return n * (21 - n) / 4
 
-def f5(z):
+def func5(z):
     return (2 - z**(-1)) / (2 * (1 - z**(-1))**2)
 
-def f6(z):
+def func6(z):
     return (10 - 11 * z**(-1)) / (2 * (1 - z**(-1))**2)
 
-def f7(z):
-    return z * (z - 1/2) / (z - 1)**3
+def func7(z):
+    return z * (z - 0.5) / (z - 1)**3
 
-def f8(z):
-    return z * (5 * z - 11/2) / (z - 1)**3
+def func8(z):
+    return z * (5 * z - 5.5) / (z - 1)**3
 
-# Plot each function
-plt.figure(figsize=(12, 8))
+# Plotting stem graphs for large n
+plt.figure(figsize=(12, 10))
 
-plt.subplot(2, 4, 1)
-plt.stem(z_values, f1(z_values))
-plt.title('(n+2)/2')
+plt.subplot(421)
+plt.stem(n_values_large, func1(n_values_large), basefmt='b', linefmt='r-', markerfmt='ro')
+plt.title(r'$\frac{n+2}{2}$')
 
-plt.subplot(2, 4, 2)
-plt.stem(z_values, f2(z_values))
-plt.title('n(n+3)/4')
+plt.subplot(422)
+plt.stem(n_values_large, func2(n_values_large), basefmt='b', linefmt='r-', markerfmt='ro')
+plt.title(r'$\frac{n(n+3)}{4}$')
 
-plt.subplot(2, 4, 3)
-plt.stem(z_values, f3(z_values))
-plt.title('(10-n)/2')
+plt.subplot(423)
+plt.stem(n_values_large, func3(n_values_large), basefmt='b', linefmt='r-', markerfmt='ro')
+plt.title(r'$\frac{10-n}{2}$')
 
-plt.subplot(2, 4, 4)
-plt.stem(z_values, f4(z_values))
-plt.title('n(21-n)/4')
+plt.subplot(424)
+plt.stem(n_values_large, func4(n_values_large), basefmt='b', linefmt='r-', markerfmt='ro')
+plt.title(r'$\frac{n(21-n)}{4}$')
 
-plt.subplot(2, 4, 5)
-plt.stem(z_values, f5(z_values))
-plt.title('(2-z^{-1})/2(1-z^{-1})^2')
+# Plotting stem graphs for z-transform expressions
+z_values = np.linspace(0.1, 2, 100)
+plt.subplot(425)
+plt.stem(z_values, func5(1/z_values), basefmt='b', linefmt='r-', markerfmt='ro')
+plt.title(r'$\frac{2 - z^{-1}}{2(1 - z^{-1})^2}$')
 
-plt.subplot(2, 4, 6)
-plt.stem(z_values, f6(z_values))
-plt.title('(10-11z^{-1})/2(1-z^{-1})^2')
+plt.subplot(426)
+plt.stem(z_values, func6(1/z_values), basefmt='b', linefmt='r-', markerfmt='ro')
+plt.title(r'$\frac{10 - 11z^{-1}}{2(1 - z^{-1})^2}$')
 
-plt.subplot(2, 4, 7)
-plt.stem(z_values, f7(z_values))
-plt.title('z(z-(1/2))/(z-1)^3')
+plt.subplot(427)
+plt.stem(z_values, func7(1/z_values), basefmt='b', linefmt='r-', markerfmt='ro')
+plt.title(r'$\frac{z(z - \frac{1}{2})}{(z - 1)^3}$')
 
-plt.subplot(2, 4, 8)
-plt.stem(z_values, f8(z_values))
-plt.title('z(5z-(11/2))/(z-1)^3')
+plt.subplot(428)
+plt.stem(z_values, func8(1/z_values), basefmt='b', linefmt='r-', markerfmt='ro')
+plt.title(r'$\frac{z(5z - \frac{11}{2})}{(z - 1)^3}$')
 
 plt.tight_layout()
 plt.show()
