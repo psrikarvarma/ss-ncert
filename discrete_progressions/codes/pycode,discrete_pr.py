@@ -1,36 +1,44 @@
-import numpy as np
 import matplotlib.pyplot as plt
 
-# Values for larger n
-n_values_large = np.arange(0, 30, 1)
+# Function to read values from file and return as list
+def read_values(filename):
+    with open(filename, 'r') as file:
+        lines = file.readlines()
+        values = [float(line.strip()) for line in lines]
+    return values
 
-# Function definitions
-def func1(n):
-    return (n + 2) / 2
+# Function to plot stem graph
+def plot_stem_graph(ax, x_values, y_values, expression):
+    ax.stem(x_values, y_values, use_line_collection=True)
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('fig*{}'.format(expression))
+    ax.grid(True)
 
-def func2(n):
-    return n * (n + 3) / 4
+# Read values from files
+values_py3 = read_values('py_3.txt')
+values_py4 = read_values('py_4.txt')
+values_py5 = read_values('py_5.txt')
+values_py6 = read_values('py_6.txt')
 
-def func3(n):
-    return (10 - n) / 2
+# Generate corresponding x values
+a = len(values_py3) - 1
+x_values = list(range(a + 1))
 
-def func4(n):
-    return n * (21 - n) / 4
+# Create subplots
+fig, axs = plt.subplots(2, 2)
 
-# Plotting stem graphs for large n
-plt.figure(figsize=(12, 10))
+# Plot stem graphs for each expression
+plot_stem_graph(axs[0, 0], x_values, values_py3, 3)
+plot_stem_graph(axs[0, 1], x_values, values_py4, 4)
+plot_stem_graph(axs[1, 0], x_values, values_py5, 5)
+plot_stem_graph(axs[1, 1], x_values, values_py6, 6)
 
-plt.subplot(421)
-plt.stem(n_values_large, func1(n_values_large), basefmt='b', linefmt='r-', markerfmt='ro')
-
-plt.subplot(422)
-plt.stem(n_values_large, func2(n_values_large), basefmt='b', linefmt='r-', markerfmt='ro')
-
-plt.subplot(423)
-plt.stem(n_values_large, func3(n_values_large), basefmt='b', linefmt='r-', markerfmt='ro')
-
-plt.subplot(424)
-plt.stem(n_values_large, func4(n_values_large), basefmt='b', linefmt='r-', markerfmt='ro')
-
+# Adjust layout
 plt.tight_layout()
+
+# Save the plot to a PNG file
+plt.savefig('figure1.png')
+
+# Show the plot
 plt.show()
