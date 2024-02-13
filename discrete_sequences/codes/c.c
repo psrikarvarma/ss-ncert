@@ -11,37 +11,21 @@ double power_of_2(int exponent) {
         return 0.5 * power_of_2(exponent + 1);
 }
 
-// Function to save values of 2^(n+3) to file recursively
-void save_values_1(int n, int limit, FILE *file1) {
+// Function to save values of 2^(n+3) and 2^(5-n) to files recursively
+void save_values(int n, int limit, FILE *file1, FILE *file2) {
     if (n > limit)
         return;
 
     double value1 = power_of_2(n + 3);
-
-    fprintf(file1, "%.2f\n", value1);
-
-    save_values_1(n + 1, limit, file1);
-}
-
-// Function to save values of 2^(5-n) to file recursively
-void save_values_2(int n, int limit, FILE *file2) {
-    if (n > limit)
-        return;
-
     double value2 = power_of_2(5 - n);
 
+    fprintf(file1, "%.2f\n", value1);
     fprintf(file2, "%.2f\n", value2);
 
-    save_values_2(n + 1, limit, file2);
+    save_values(n + 1, limit, file1, file2);
 }
 
 int main() {
-    int a;
-
-    // Input for a
-    printf("enter a value upto which you wanted to stem plot");
-    scanf("%d", &a);
-
     // Open files for writing
     FILE *file1 = fopen("py_1.txt", "w");
     FILE *file2 = fopen("py_2.txt", "w");
@@ -52,8 +36,7 @@ int main() {
     }
 
     // Save values recursively
-    save_values_1(0, a, file1);
-    save_values_2(0, a, file2);
+    save_values(0, 15, file1, file2);
 
     // Close files
     fclose(file1);
