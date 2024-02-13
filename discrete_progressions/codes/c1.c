@@ -1,44 +1,26 @@
 #include <stdio.h>
 
-// Function to calculate the expressions recursively and save values to file
-void save_values(int n, int limit, FILE *file, int expression) {
+// Function to save values to file recursively
+void save_values(int n, int limit, FILE *file3, FILE *file4, FILE *file5, FILE *file6) {
     if (n > limit)
         return;
 
-    double value;
+    double value3 = (n + 2) / 2.0;
+    double value4 = n * (n + 3) / 4.0;
+    double value5 = (10 - n) / 2.0;
+    double value6 = n * (21 - n) / 4.0;
 
-    // Calculate the expression based on the given number
-    switch (expression) {
-        case 3:
-            value = (n + 2) / 2.0;
-            break;
-        case 4:
-            value = n * (n + 3) / 4.0;
-            break;
-        case 5:
-            value = (10 - n) / 2.0;
-            break;
-        case 6:
-            value = n * (21 - n) / 4.0;
-            break;
-        default:
-            return;
-    }
-
-    // Save the calculated value to the file
-    fprintf(file, "%.2f\n", value);
+    // Save the calculated values to the files
+    fprintf(file3, "%.2f\n", value3);
+    fprintf(file4, "%.2f\n", value4);
+    fprintf(file5, "%.2f\n", value5);
+    fprintf(file6, "%.2f\n", value6);
 
     // Recursive call for the next value
-    save_values(n + 1, limit, file, expression);
+    save_values(n + 1, limit, file3, file4, file5, file6);
 }
 
 int main() {
-    int a;
-
-    // Input for a
-    printf("enter a value upto which you wanted to stem plot");
-    scanf("%d", &a);
-
     // Open files for writing
     FILE *file3 = fopen("py_3.txt", "w");
     FILE *file4 = fopen("py_4.txt", "w");
@@ -50,11 +32,8 @@ int main() {
         return 1;
     }
 
-    // Save values recursively for each expression
-    save_values(0, a, file3, 3);
-    save_values(0, a, file4, 4);
-    save_values(0, a, file5, 5);
-    save_values(0, a, file6, 6);
+    // Save values recursively for all expressions
+    save_values(0, 15, file3, file4, file5, file6);
 
     // Close files
     fclose(file3);
