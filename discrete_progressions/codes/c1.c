@@ -36,7 +36,7 @@ int main() {
     int a;
 
     // Input for a
-    printf("Enter the value of a: ");
+    printf("enter a value upto which you wanted to stem plot");
     scanf("%d", &a);
 
     // Open files for writing
