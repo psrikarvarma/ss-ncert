@@ -24,12 +24,12 @@ y_values_reflected = reflected_sound_wave(A, k, omega, t, x_values)
 y_values_combined = y_values_original + y_values_reflected
 
 # Plot the original and reflected sound waves combined
-plt.stem(x_values, y_values_original, label='Original Sound Wave')
-plt.stem(x_values, y_values_reflected, label='Reflected Sound Wave')
+plt.plot(x_values, y_values_original, label='Original Sound Wave')
+plt.plot(x_values, y_values_reflected, label='Reflected Sound Wave')
 plt.plot(x_values, y_values_combined, label='Combined Waves', linestyle='dashed')
-plt.title('Combined Sound Waves: $y = A \sin(kx) \cos(\omega t) + (-A \sin(kx) \cos(\omega t))$')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.legend()
 plt.grid(True)
+plt.savefig('ncert-physics/11/15/23/figs/py_w.png')
 plt.show()
